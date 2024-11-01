@@ -1,0 +1,26 @@
+{
+  "name": "api-express-sequelize-postgresql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [],
+  "author": "JosuelSantosDEV",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7",
+    "sequelize": "6.32.1",
+    "sequelize-cli": "6.6.1",
+    "sqlite3": "5.1.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0"
+  }
+}
