@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Category',
-    tableName: 'categories'
+    tableName: 'categories',
+    paranoid: true // This option make soft-delete
   });
   return Category;
 };

@@ -10,14 +10,46 @@ class PeopleController extends Controller{
     }
 
     async getRegistrations (req, res){
-        const { studentId} = req.params;
+        const { student_id } = req.params;
         try {
             
-            const registrationList = await peopleService.getRegistrationsForStudent(Number(studentId));
+            const registrationList = await peopleService.getRegistrationsForStudent(Number(student_id));
             return res.status(200).json(registrationList);
 
         } catch (error) {
-            console.log("Error in get registrations of people: " + error);
+            return res.status(500).json({Error: "Error in get registrations of people: " + error.message});
+        }
+    }
+
+    async getAllRegistrations (req, res){
+        const { student_id } = req.params;
+        try {
+            
+            const registrationList = await peopleService.getAllRegistrationsForStudent(Number(student_id));
+            return res.status(200).json(registrationList);
+
+        } catch (error) {
+            return res.status(500).json({Error: "Error in get all registrations of people: " + error.message});
+        }
+    }
+
+    async getAllPeopleRegisters(req, res){
+        try {
+            const peopleList = await peopleService.getPeopleFromScopeAllRegisters();
+            return res.status(200).json(peopleList);
+        } catch (error) {
+            return res.status(500).json({Error: "Error in get registrations of people: " + error.message});
+        }
+    }
+    async studentRegisterCancel(req, res){
+        const { student_id } = req.params;
+        try {
+
+            await peopleService.cancelRegistrationAndStudent(Number(student_id));
+            return res.status(200).json({message: "Registration and Student cancel with successfull"});
+
+        } catch (error) {
+            return res.status(500).json({Error: "Error in get registrations of people: " + error.message});
         }
     }
 };
